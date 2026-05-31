@@ -1,6 +1,8 @@
 # Maarg Setup (Steps by Deepak Sir)
 Refer to the official guide here: [Setup Moqui on Local Machine](https://github.com/hotwax/hotwax-maarg-docker-config/blob/main/docs/setup_moqui_on_local_machine.md)
 
+> Note: The link above was shared by Deepak Sir. The steps below are my own notes for the local Maarg setup.
+
 ---
 
 ## 📋 3 Important Entities
@@ -26,7 +28,7 @@ Fill them with the correct data (this can be prompted).
    > The **Product Store** is required before creating the Shopify Shop.
 
 ### 2. Seed Services for Product Import
-Import the seed services data using the local data import tool:
+Import the seed services data using the local data import tool; refer to `job-data.md` for the service data.
 [Local Data Import](http://localhost:8080/qapps/tools/Entity/DataImport)
 
 #### Note / Issue Encountered:

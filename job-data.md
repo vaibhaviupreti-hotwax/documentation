@@ -1,13 +1,4 @@
-https://github.com/hotwax/hotwax-shopify-oms-bridge.git
-https://github.com/hotwax/mantle-shopify-connector.git
-
-queue_BulkQuerySystemMessage_BulkProductAndVariantsById
-send_BulkProductAndVariantsByIdQueryProducedSystemMessages
-poll_BulkOperationResult_ShopifyBulkQuery
-
-
-
-<moqui.basic.EnumerationType description="OMS System Message Type Enum" enumTypeId="OMSMessageTypeEnum"/>
+ <moqui.basic.EnumerationType description="OMS System Message Type Enum" enumTypeId="OMSMessageTypeEnum"/>
  <moqui.service.job.ServiceJob jobName="queue_BulkQuerySystemMessage_BulkProductAndVariantsById" description="Queue bulk products query"
                                  serviceName="co.hotwax.shopify.system.ShopifySystemMessageServices.queue#BulkQuerySystemMessage" cronExpression="0 0 * * * ?" paused="Y" instanceOfProductId="QUEUE_UPD_PRD_FEED">
        <parameters parameterName="systemMessageTypeId" parameterValue="BulkProductAndVariantsByIdQuery"/>
@@ -64,4 +55,3 @@ poll_BulkOperationResult_ShopifyBulkQuery
 
    <!-- Remove instanceOfProductId from existing job to remove it from the Job Manager PWA-->
    <moqui.service.job.ServiceJob jobName="queue_UpdatedProductIdsFeed" instanceOfProductId=""/>
-

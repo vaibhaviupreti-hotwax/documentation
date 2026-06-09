@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="ext-seed">
+    <!-- 1. COMPANY SETUP -->
+    <org.apache.ofbiz.party.party.Party partyId="AS_BEAUTY" partyTypeId="PARTY_GROUP">
+        <org.apache.ofbiz.party.party.PartyGroup groupName="AS Beauty Group"/>
+        <org.apache.ofbiz.party.party.PartyRole roleTypeId="INTERNAL_ORGANIZATIO"/>
+    </org.apache.ofbiz.party.party.Party>
+
+    <!-- 2. FACILITY (WAREHOUSE) -->
+    <org.apache.ofbiz.product.facility.Facility 
+        facilityId="AS_BEAUTY_WH" 
+        facilityTypeId="WAREHOUSE" 
+        facilityName="AS Beauty Central Warehouse"
+        defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM"/>
+
+    <!-- 3. OFBIZ PARALLEL-RUN SHIM -->
+    <org.apache.ofbiz.product.catalog.ProdCatalog 
+        prodCatalogId="DUMMY_CATALOG" 
+        catalogName="Dummy Catalog"/>
+    <org.apache.ofbiz.product.catalog.ProdCatalogCategory 
+        prodCatalogId="DUMMY_CATALOG" 
+        productCategoryId="BROWSE_ROOT" 
+        prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT" 
+        fromDate="2026-01-01 00:00:00.0"/>
+
+    <!-- 4. BRAND STORE SETUP -->
+    <org.apache.ofbiz.product.store.ProductStore 
+        productStoreId="AS_BEAUTY_STORE" 
+        storeName="AS Beauty Official Store"
+        companyName="AS Beauty Group" 
+        payToPartyId="AS_BEAUTY" 
+        inventoryFacilityId="AS_BEAUTY_WH"
+        checkInventory="Y" 
+        reserveInventory="Y" 
+        requireInventory="Y"
+        defaultLocaleString="en_US"
+        defaultCurrencyUomId="USD" 
+        defaultSalesChannelEnumId="WEB_SALES_CHANNEL">
+
+        <org.apache.ofbiz.product.store.ProductStoreFacility 
+            facilityId="AS_BEAUTY_WH" 
+            fromDate="2026-01-01 00:00:00.0"/>
+
+        <!-- BRAND SPECIFIC SETTINGS -->
+        <org.apache.ofbiz.product.store.ProductStoreSetting 
+            settingTypeEnumId="UPDATE_PRODUCT_TYPE" 
+            settingValue="true"/>
+        <org.apache.ofbiz.product.store.ProductStoreSetting 
+            settingTypeEnumId="RATE_SHOPPING" 
+            settingValue="Y"/>
+
+        <org.apache.ofbiz.product.store.ProductStoreCatalog 
+            prodCatalogId="DUMMY_CATALOG" 
+            fromDate="2026-01-01 12:00:00.000" 
+            sequenceNum="1"/>
+    </org.apache.ofbiz.product.store.ProductStore>
+
+    <!-- 5. SHOPIFY SHOPS (Mapped to Single ProductStore) -->
+    <co.hotwax.shopify.ShopifyShop shopId="JULEP_SHOP" productStoreId="AS_BEAUTY_STORE" name="Julep" />
+    <co.hotwax.shopify.ShopifyShop shopId="LAURA_GELLER_SHOP" productStoreId="AS_BEAUTY_STORE" name="Laura Geller" />
+
+    <!-- 6. INTEGRATION MAPPINGS -->
+    <co.hotwax.integration.IntegrationTypeMapping 
+        integrationTypeId="PS_SHP_MTHD" 
+        mappingKey="NEXT_DAY" 
+        mappingValue="Free Shipping Next Day"/>
+    <co.hotwax.integration.IntegrationTypeMapping 
+        integrationTypeId="PS_PMT_MTHD" 
+        mappingKey="EXT_SHOP_VISA" 
+        mappingValue="visa"/>
+
+    <!-- 7. SERVICE JOBS -->
+    <!-- <moqui.service.job.ServiceJob 
+        jobName="ShopifyOrderSync_Julep" 
+        description="Pulls Shopify Orders for Julep" 
+        serviceName="co.hotwax.shopify.order.ShopifyOrderServices.sync#ShopifyOrders" 
+        cronExpression="0 0/15 * * * ?"/>
+    <moqui.service.job.ServiceJob 
+        jobName="ShopifyOrderSync_LauraGeller" 
+        description="Pulls Shopify Orders for Laura Geller" 
+        serviceName="co.hotwax.shopify.order.ShopifyOrderServices.sync#ShopifyOrders" 
+        cronExpression="0 0/15 * * * ?"/> -->
+</entity-facade-xml>

@@ -8,6 +8,7 @@
             <entity-facade-xml type="ext-seed" location="data/ASBeautySetupData.xml"/>
             <entity-facade-xml type="ext-seed" location="data/ASBeautyLocationData.xml"/>
             <entity-facade-xml type="ext-seed" location="data/ASBeautyProductData.xml"/>
+            <entity-facade-xml type="ext-seed" location="data/ASBeautyProductData_v2.xml"/>
         </load-data>
     </entity-facade>
 </component>

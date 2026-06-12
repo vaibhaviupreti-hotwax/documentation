@@ -1,5 +1,4 @@
 # Purchase Order Sync Incident
-
 ## Issue Summary
 A purchase order was reported as imported in a cancelled state. The client received the issue notification roughly 15 minutes ago.
 
@@ -42,4 +41,5 @@ We have identified that purchase order `34867` was partially cancelled. A small 
 - A blank or missing item status should default to `ITEM_CREATED`.
 - Cancelled or completed items should be excluded from this create flow.
 
-
+## references
+https://docs.google.com/document/d/1LTk6PK9CJ_YaahvSArteYd8AKfmWYZvq6FecvWZv87A/edit?tab=t.0
